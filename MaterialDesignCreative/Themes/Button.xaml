@@ -1,0 +1,70 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:mdt="http://materialdesigninxaml.net/winfx/xaml/themes"
+					xmlns:mdc="http://amahane.ml/xaml/materialdesigncreative">
+	<Style x:Key="MaterialDesignCreative.Button.Raised"
+		   TargetType="{x:Type ButtonBase}"
+		   BasedOn="{StaticResource MaterialDesignRaisedButton}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type ButtonBase}">
+					<Grid>
+						<AdornerDecorator CacheMode="{Binding RelativeSource={RelativeSource Self}, Path=(mdt:ShadowAssist.CacheMode)}">
+							<Grid>
+								<Border x:Name="PART_DropShadowDecorator"
+										Effect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdt:ShadowAssist.ShadowDepth), Converter={x:Static mdt:ShadowConverter.Instance}}">
+									<Path Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdc:GeometryAssist.Geometry)}"
+										  Fill="{TemplateBinding Background}"
+										  Stroke="{TemplateBinding BorderBrush}"
+										  StrokeThickness="{TemplateBinding BorderThickness}" />
+								</Border>
+								<ProgressBar Style="{DynamicResource MaterialDesignLinearProgressBar}"
+											 Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdt:ButtonProgressAssist.Value)}"
+											 Minimum="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdt:ButtonProgressAssist.Minimum)}"
+											 Maximum="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdt:ButtonProgressAssist.Maximum)}"
+											 Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdt:ButtonProgressAssist.IndicatorForeground)}"
+											 Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdt:ButtonProgressAssist.IndicatorBackground)}"
+											 IsIndeterminate="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdt:ButtonProgressAssist.IsIndeterminate)}"
+											 Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdt:ButtonProgressAssist.IsIndicatorVisible), Converter={StaticResource BooleanToVisibilityConverter}}"
+											 Opacity="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdt:ButtonProgressAssist.Opacity)}"
+											 Clip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdc:GeometryAssist.Geometry)}"
+											 Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ButtonBase}}, Path=ActualWidth}"
+											 Height="{TemplateBinding Height}"
+											 HorizontalAlignment="Left"
+											 VerticalAlignment="Center"></ProgressBar>
+							</Grid>
+						</AdornerDecorator>
+						<mdt:Ripple Content="{TemplateBinding Content}"
+									ContentTemplate="{TemplateBinding ContentTemplate}"
+									ContentStringFormat="{TemplateBinding ContentStringFormat}"
+									HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+									VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+									SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+									Padding="{TemplateBinding Padding}"
+									Clip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdc:GeometryAssist.Geometry)}"
+									Focusable="False" />
+					</Grid>
+					<ControlTemplate.Triggers>
+						<Trigger Property="IsMouseOver"
+								 Value="true">
+							<Setter TargetName="PART_DropShadowDecorator"
+									Property="mdt:ShadowAssist.Darken"
+									Value="True" />
+						</Trigger>
+						<Trigger Property="IsKeyboardFocused"
+								 Value="true">
+							<Setter TargetName="PART_DropShadowDecorator"
+									Property="mdt:ShadowAssist.Darken"
+									Value="True" />
+						</Trigger>
+						<Trigger Property="IsEnabled"
+								 Value="false">
+							<Setter Property="Opacity"
+									Value="0.23" />
+						</Trigger>
+					</ControlTemplate.Triggers>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+</ResourceDictionary>
