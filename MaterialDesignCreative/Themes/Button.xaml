@@ -29,7 +29,7 @@
 											 Opacity="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdt:ButtonProgressAssist.Opacity)}"
 											 Clip="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(mdc:GeometryAssist.Geometry)}"
 											 Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ButtonBase}}, Path=ActualWidth}"
-											 Height="{TemplateBinding Height}"
+											 Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ButtonBase}}, Path=ActualHeight}"
 											 HorizontalAlignment="Left"
 											 VerticalAlignment="Center"></ProgressBar>
 							</Grid>

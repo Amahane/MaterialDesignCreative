@@ -9,6 +9,7 @@
 		<AssemblyTitle>Material Design Creative</AssemblyTitle>
 		<Product>Material Design Creative</Product>
 		<Description>Material Design Creative is based on Material Design in XAML Toolkit and Material Design Extensions to provide tinny bitty little additional features for WPF Applications.</Description>
+		<Version>1.0.1</Version>
 		<Authors>Amahane Azure</Authors>
 		<Copyright>Copyright © Amahane Azure 2020</Copyright>
 		<PackageTags>WPF XAML Material Design</PackageTags>
